@@ -51,6 +51,16 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 
+" commands required after installing color coded
+function! BuildColor_Coded(info)
+  if a:info.status != 'installed'
+    !cd ~/.vim/plugged/color_coded
+    !mkdir build && cd build
+    !cmake ..
+    !make && make install
+  endif
+endfunction
+
 "Ladda ner automatiskt vim-plug"
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -70,6 +80,12 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 "Intellisense"
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+
+Plug 'jeaye/color_coded', {
+    \ 'do': function('BuildColor_Coded')
+    \ }
 call plug#end()
 
 "Ctrl-n för nerdtree"
