@@ -1,5 +1,5 @@
 "~/.config/nvim/init.vim för Linux Terminal"
-"TODO coc inställningar och plugins
+"TODO  och plugins
 "Att göra innan användning"
 
 "1. Ändra CapsLock till Esc: gå till menu->keyboard->keyboard layouts->
@@ -29,6 +29,16 @@ set ttimeoutlen=50 "Ingen label-delay när man går från INSERT till NORMAL"
 set tabstop=4
 set shiftwidth=4
 set expandtab
+
+let g:coc_global_extensions = [
+\ 'coc-snippets',
+\ 'coc-json',
+\ 'coc-clangd',
+\ 'coc-java',
+\ 'coc-html',
+\ 'coc-css',
+\ 'coc-tsserver'
+\ ]
 
 "Skapa katalogerna automatisk om de inte finns."
 if !isdirectory($HOME . '/.config/nvim/backup//')
@@ -66,7 +76,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 "Intellisense"
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
+"Bättre clangd syntax highlight"
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 call plug#end()
